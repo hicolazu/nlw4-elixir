@@ -1,9 +1,7 @@
 defmodule Rocketpay do
-  @moduledoc """
-  Rocketpay keeps the contexts that define your domain
-  and business logic.
+  alias Rocketpay.Users.Create, as: CreateUser
+  alias Rocketpay.Users.Get, as: GetUser
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  defdelegate create_user(params), to: CreateUser, as: :call
+  defdelegate get_user(nickname), to: GetUser, as: :call
 end

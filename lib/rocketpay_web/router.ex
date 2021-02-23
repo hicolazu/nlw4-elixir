@@ -9,6 +9,9 @@ defmodule RocketpayWeb.Router do
     pipe_through :api
 
     get "/:filename", WelcomeController, :index
+
+    get "/users/:nickname", UsersController, :find
+    post "/users", UsersController, :create
   end
 
   # Enables LiveDashboard only for development
