@@ -3,6 +3,15 @@ defmodule RocketpayWeb.UsersController do
 
   alias Rocketpay.User
 
+  def findAll(conn, _params) do
+    users = Rocketpay.Repo.all(User)
+    |> Enum.map(fn user -> %{id: user.id, name: user.name, age: user.age, email: user.email, nickname: user.nickname} end)
+
+    conn
+    |> put_status(:ok)
+    |> json(%{users: users})
+  end
+
   def find(conn, %{"nickname" => nickname}) do
     nickname
     |> Rocketpay.get_user()
