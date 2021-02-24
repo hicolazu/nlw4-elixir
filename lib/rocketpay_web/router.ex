@@ -13,6 +13,9 @@ defmodule RocketpayWeb.Router do
     get "/users", UsersController, :findAll
     get "/users/:nickname", UsersController, :find
     post "/users", UsersController, :create
+
+    post "/accounts/:id/deposit", AccountsController, :deposit
+    post "/accounts/:id/withdraw", AccountsController, :withdraw
   end
 
   # Enables LiveDashboard only for development
